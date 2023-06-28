@@ -9,7 +9,7 @@ defmodule Protohackers.Application do
   def start(_type, _args) do
     children = [
       Protohackers.EchoServer,
-      {Bandit, plug: Protohackers.Healthcheck, port: 8080},
+      {Bandit, plug: Protohackers.Healthcheck, port: 80},
       {Task.Supervisor, name: Protohackers.TaskSupervisor, max_children: 10}
     ]
 

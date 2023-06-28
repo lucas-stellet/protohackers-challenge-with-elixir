@@ -1,0 +1,29 @@
+# fly.toml app configuration file generated for protohackers-by-elixir on 2023-06-28T23:35:38+03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "protohackers-by-elixir"
+primary_region = "ams"
+kill_signal = "SIGTERM"
+kill_timeout = "5s"
+
+[experimental]
+  auto_rollback = true
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 80
+
+  [[services.ports]]
+    port = 80
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 5001
+  [[services.ports]]
+    port = 5001
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 250
+    soft_limit = 200
